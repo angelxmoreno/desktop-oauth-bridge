@@ -9,7 +9,6 @@ const app = express();
 app.use(cors());
 app.use(compression());
 app.use(HttpLogger);
-app.listen(3000);
 
 export const startServer = async () => {
     const port = import.meta.env.PORT || 3000;
