@@ -20,8 +20,8 @@
     "module": "index.ts",
     "type": "module",
     "scripts": {
-        "dev": "vite",
-        "build": "tsc && vite build",
+        "dev": "bun src/index.ts --watch",
+        "build": "tsc",
         "prepare": "[ -d .git ] && husky install || echo 'Skipping Husky install'",
         "commitlint": "commitlint --edit",
         "lint": "eslint src/** --max-warnings 0",
