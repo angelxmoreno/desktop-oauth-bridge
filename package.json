@@ -20,7 +20,7 @@
     "module": "index.ts",
     "type": "module",
     "scripts": {
-        "dev": "bun src/index.ts --watch",
+        "dev": "bun --watch src/index.ts",
         "build": "tsc",
         "prepare": "[ -d .git ] && husky install || echo 'Skipping Husky install'",
         "commitlint": "commitlint --edit",
@@ -41,6 +41,7 @@
         "eslint-config-universe": "^12.0.1",
         "husky": "^9.0.11",
         "lint-staged": "^15.2.2",
+        "pino-pretty": "^11.0.0",
         "prettier": "^3.2.5"
     },
     "peerDependencies": {
@@ -50,6 +51,8 @@
         "@decorators/express": "^3.0.0",
         "date-fns": "^3.6.0",
         "express": "^4.19.2",
+        "pino": "^9.0.0",
+        "pino-http": "^10.1.0",
         "typescript": "^5.4.5"
     },
     "eslintConfig": {
