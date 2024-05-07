@@ -1,0 +1,78 @@
+{
+    "name": "desktop-oauth-bridge",
+    "version": "0.1.0",
+    "description": "Bridge between desktop and mobile applications for securely managing OAuth 2.0 authentication",
+    "keywords": [
+        "oauth",
+        "authentication",
+        "desktop",
+        "mobile"
+    ],
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/angelxmoreno/desktop-oauth-bridge.git"
+    },
+    "bugs": {
+        "url": "https://github.com/angelxmoreno/desktop-oauth-bridge/issues"
+    },
+    "homepage": "https://github.com/angelxmoreno/desktop-oauth-bridge#readme",
+    "module": "index.ts",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "prepare": "[ -d .git ] && husky install || echo 'Skipping Husky install'",
+        "commitlint": "commitlint --edit",
+        "lint": "eslint src/** --max-warnings 0",
+        "lint:fix": "eslint src/** --fix --cache",
+        "test": "your-test-command-here",
+        "coverage": "your-coverage-command-here",
+        "docs": "your-docs-generation-command-here",
+        "changelog": "your-changelog-generation-command-here"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^19.3.0",
+        "@commitlint/config-conventional": "^19.2.2",
+        "@types/bun": "latest",
+        "@types/express": "^4.17.21",
+        "eslint": "^8.0.0",
+        "eslint-config-universe": "^12.0.1",
+        "husky": "^9.0.11",
+        "lint-staged": "^15.2.2",
+        "prettier": "^3.2.5"
+    },
+    "peerDependencies": {
+        "typescript": "^5.4.5"
+    },
+    "dependencies": {
+        "@decorators/express": "^3.0.0",
+        "date-fns": "^3.6.0",
+        "express": "^4.19.2",
+        "typescript": "^5.4.5"
+    },
+    "eslintConfig": {
+        "root": true,
+        "extends": [
+            "universe/node"
+        ]
+    },
+    "prettier": {
+        "singleQuote": true,
+        "trailingComma": "all",
+        "arrowParens": "avoid",
+        "semi": true,
+        "useTabs": false,
+        "tabWidth": 4,
+        "printWidth": 120
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx}": "eslint --fix",
+        "*.{json,md}": "prettier --write"
+    },
+    "commitlint": {
+        "extends": [
+            "@commitlint/config-conventional"
+        ]
+    }
+}
