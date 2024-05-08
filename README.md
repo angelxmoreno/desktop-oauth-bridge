@@ -2,8 +2,6 @@
 
 Securely manage OAuth 2.0 authentication for desktop and mobile applications. Bridge between apps and OAuth providers.
 
-**Note: This project is currently under active development.**
-
 ## Overview
 
 DesktopOAuthBridge is an open-source project aimed at securely managing OAuth 2.0 authentication for desktop and mobile
@@ -16,6 +14,27 @@ without storing sensitive information locally.
 -   Bridge between apps and OAuth providers.
 -   Built with TypeScript and Express.js for flexibility and ease of use.
 
+## Installation
+
+1. clone the repo
+    ```sh
+    git clone https://github.com/angelxmoreno/desktop-oauth-bridge.git
+    ```
+2. copy the `sample.env` file then add client ids and secrets
+    ```sh
+    cd desktop-oauth-bridge
+    cp sample.env .env.local
+    open .env.local
+    ```
+
+## Usage
+
+Start the server and access the [available endpoints](#endpoints)
+
+```sh
+bun dev
+```
+
 ## Endpoints
 
 ### Google
@@ -24,15 +43,6 @@ without storing sensitive information locally.
 
 -   /google/devices/code
 -   /google/devices/token?device_code=[the device code]
-
-## Installation
-
-Instructions for installation will be provided once the project reaches a stable release. In the meantime, feel free to
-explore the codebase and contribute to its development.
-
-## Usage
-
-Usage instructions will be provided once the project reaches a stable release.
 
 ## Contributing
 
@@ -50,4 +60,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For questions, feedback, or support, please contact [project@example.com].
+For questions, feedback, or support, please contact [phpengineer123@gmail.com].
