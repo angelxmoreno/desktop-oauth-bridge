@@ -16,6 +16,15 @@ without storing sensitive information locally.
 -   Bridge between apps and OAuth providers.
 -   Built with TypeScript and Express.js for flexibility and ease of use.
 
+## Endpoints
+
+### Google
+
+[Google OAuth 2.0 for TV and Limited-Input Device Applications](https://developers.google.com/identity/protocols/oauth2/limited-input-device)
+
+-   /google/devices/code
+-   /google/devices/token?device_code=[the device code]
+
 ## Installation
 
 Instructions for installation will be provided once the project reaches a stable release. In the meantime, feel free to

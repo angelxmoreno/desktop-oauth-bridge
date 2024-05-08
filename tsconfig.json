@@ -23,6 +23,9 @@
         /* path aliases */
         "paths": {
             "@app/*": ["./src/*"]
-        }
+        },
+
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true
     }
 }
