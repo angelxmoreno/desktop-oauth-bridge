@@ -20,7 +20,7 @@ without storing sensitive information locally.
     ```sh
     git clone https://github.com/angelxmoreno/desktop-oauth-bridge.git
     ```
-2. copy the `sample.env` file then add client ids and secrets
+2. copy the `sample.env` file, then add client ids and secrets
     ```sh
     cd desktop-oauth-bridge
     cp sample.env .env.local
