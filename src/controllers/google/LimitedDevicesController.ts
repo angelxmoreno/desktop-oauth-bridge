@@ -12,7 +12,7 @@ type DeviceCodeResponse = {
 
 type TokenResponse = {
     access_token: string;
-    expires_in: 3599;
+    expires_in: number;
     refresh_token: string;
     scope: string;
     token_type: string;

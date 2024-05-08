@@ -1,7 +1,7 @@
 {
     "name": "desktop-oauth-bridge",
     "main": "dist/index.js",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "description": "Bridge between desktop and mobile applications for securely managing OAuth 2.0 authentication",
     "keywords": [
         "oauth",
@@ -29,7 +29,7 @@
         "test": "your-test-command-here",
         "coverage": "your-coverage-command-here",
         "docs": "your-docs-generation-command-here",
-        "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
+        "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
     },
     "devDependencies": {
         "@commitlint/cli": "^19.3.0",
