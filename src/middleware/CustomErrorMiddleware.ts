@@ -1,3 +1,4 @@
+import { AppConfig } from '@app/config/AppConfig.ts';
 import { Logger } from '@app/logger.ts';
 import { isAxiosError } from 'axios';
 import e from 'express';
@@ -24,6 +25,9 @@ export class CustomErrorMiddleware implements ExpressErrorMiddlewareInterface {
         } else if (error.toJSON) {
             errorObj = error.toJSON();
         }
-        response.status(errorObj.status).json(errorObj);
+        response.status(errorObj.status).json({
+            ...errorObj,
+            stack: AppConfig.server.isDev ? errorObj.stack : undefined,
+        });
     }
 }
