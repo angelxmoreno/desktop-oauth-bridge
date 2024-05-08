@@ -1,10 +1,12 @@
 export const AppConfig = {
     server: {
-        isDev: import.meta.env.NODE_ENV !== 'production',
+        name: process.env.SERVER_NAME || 'noname',
+        port: process.env.PORT || 3000,
+        isDev: process.env.NODE_ENV !== 'production',
     },
     google: {
-        clientId: import.meta.env.GOOGLE_CLIENT_ID,
-        clientSecret: import.meta.env.GOOGLE_CLIENT_SECRET,
-        scopes: String(import.meta.env.GOOGLE_SCOPES || '').split(','),
+        clientId: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        scopes: String(process.env.GOOGLE_SCOPES || '').split(','),
     },
 };

@@ -7,11 +7,10 @@ import { CustomErrorMiddleware } from '@app/middleware/CustomErrorMiddleware.ts'
 import { NotFoundErrorMiddleware } from '@app/middleware/NotFoundErrorMiddleware.ts';
 import compression from 'compression';
 import express from 'express';
-import asyncify from 'express-asyncify';
 import morgan from 'morgan';
 import { useExpressServer } from 'routing-controllers';
 
-const app = asyncify(express());
+const app = express();
 
 app.use(compression());
 app.use(morgan('combined'));
@@ -25,7 +24,7 @@ useExpressServer(app, {
 });
 app.use(NotFoundErrorMiddleware);
 const startServer = async () => {
-    const port = import.meta.env.PORT || 3000;
+    const port = AppConfig.server.port;
 
     app.listen(port, () => {
         Logger.info(`Server is running on port ${port}`);

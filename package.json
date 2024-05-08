@@ -1,5 +1,6 @@
 {
     "name": "desktop-oauth-bridge",
+    "main": "dist/index.js",
     "version": "0.0.0",
     "description": "Bridge between desktop and mobile applications for securely managing OAuth 2.0 authentication",
     "keywords": [
@@ -17,11 +18,10 @@
         "url": "https://github.com/angelxmoreno/desktop-oauth-bridge/issues"
     },
     "homepage": "https://github.com/angelxmoreno/desktop-oauth-bridge#readme",
-    "module": "index.ts",
-    "type": "module",
     "scripts": {
+        "start": "NODE_ENV=production node dist/index.js",
         "dev": "bun --watch src/index.ts",
-        "build": "tsc",
+        "build": "tsup src/index.ts --env.NODE_ENV production",
         "prepare": "[ -d .git ] && husky install || echo 'Skipping Husky install'",
         "commitlint": "commitlint --edit",
         "lint": "eslint src/** --max-warnings 0",
@@ -34,6 +34,7 @@
     "devDependencies": {
         "@commitlint/cli": "^19.3.0",
         "@commitlint/config-conventional": "^19.2.2",
+        "@swc/core": "^1.5.3",
         "@types/body-parser": "^1.19.5",
         "@types/bun": "latest",
         "@types/compression": "^1.7.5",
@@ -46,7 +47,8 @@
         "husky": "^9.0.11",
         "lint-staged": "^15.2.2",
         "pino-pretty": "^11.0.0",
-        "prettier": "^3.2.5"
+        "prettier": "^3.2.5",
+        "tsup": "^8.0.2"
     },
     "peerDependencies": {
         "typescript": "^5.4.5"
