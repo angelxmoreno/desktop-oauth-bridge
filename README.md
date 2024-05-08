@@ -22,8 +22,8 @@ without storing sensitive information locally.
 
 [Google OAuth 2.0 for TV and Limited-Input Device Applications](https://developers.google.com/identity/protocols/oauth2/limited-input-device)
 
--   /google/devices/auth-url
--   /devices/token?device_code=[the device code]
+-   /google/devices/code
+-   /google/devices/token?device_code=[the device code]
 
 ## Installation
 
