@@ -42,7 +42,8 @@ bun dev
 [Google OAuth 2.0 for TV and Limited-Input Device Applications](https://developers.google.com/identity/protocols/oauth2/limited-input-device)
 
 -   /google/devices/code
--   /google/devices/token?device_code=[the device code]
+-   /google/devices/token-with-user?device_code=[the device code]
+-   /google/devices/token?device_code=[the device code] (deprecated)
 
 ## Contributing
 
