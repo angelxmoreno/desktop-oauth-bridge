@@ -1,6 +1,8 @@
 import { AppConfig } from '@app/config/AppConfig.ts';
 import { GoogleLimitedDevicesService } from '@app/lib/GoogleLimitedDevicesService.ts';
-import { Get, JsonController, QueryParam } from 'routing-controllers';
+import { isAxiosError } from 'axios';
+import e from 'express';
+import { Get, JsonController, QueryParam, Res } from 'routing-controllers';
 
 @JsonController('/google/devices')
 export class LimitedDevicesController {
@@ -32,11 +34,23 @@ export class LimitedDevicesController {
     }
 
     @Get('/token-with-user')
-    async getTokenAndUserResponse(@QueryParam('device_code', { required: true }) device_code: string) {
+    async getTokenAndUserResponse(
+        @QueryParam('device_code', { required: true }) device_code: string,
+        @Res() res: e.Response,
+    ) {
         if (!device_code) {
             throw new Error(`Missing "device_code"`);
         }
-        const tokenResponse = await this.client.getTokenResponse(device_code);
-        return this.client.getUserInfo(tokenResponse);
+        try {
+            const tokenResponse = await this.client.getTokenResponse(device_code);
+            return this.client.getUserInfo(tokenResponse);
+        } catch (e) {
+            if (isAxiosError(e) && e.response?.status === 428) {
+                res.status(202);
+                return e.response.data;
+            }
+
+            throw e;
+        }
     }
 }
