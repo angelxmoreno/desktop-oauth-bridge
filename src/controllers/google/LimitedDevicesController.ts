@@ -2,10 +2,6 @@ import { AppConfig } from '@app/config/AppConfig.ts';
 import { GoogleLimitedDevicesService } from '@app/lib/GoogleLimitedDevicesService.ts';
 import { Get, JsonController, QueryParam } from 'routing-controllers';
 
-/**
- * https://developers.google.com/identity/protocols/oauth2/limited-input-device
- */
-
 @JsonController('/google/devices')
 export class LimitedDevicesController {
     client: GoogleLimitedDevicesService;
@@ -23,11 +19,24 @@ export class LimitedDevicesController {
         return this.client.getDeviceCodeResponse();
     }
 
+    /**
+     * @deprecated
+     * @param device_code
+     */
     @Get('/token')
     async getTokenResponse(@QueryParam('device_code', { required: true }) device_code: string) {
         if (!device_code) {
             throw new Error(`Missing "device_code"`);
         }
         return this.client.getTokenResponse(device_code);
+    }
+
+    @Get('/token-with-user')
+    async getTokenAndUserResponse(@QueryParam('device_code', { required: true }) device_code: string) {
+        if (!device_code) {
+            throw new Error(`Missing "device_code"`);
+        }
+        const tokenResponse = await this.client.getTokenResponse(device_code);
+        return this.client.getUserInfo(tokenResponse);
     }
 }

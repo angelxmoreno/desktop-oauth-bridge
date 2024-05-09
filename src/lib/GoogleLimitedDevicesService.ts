@@ -38,6 +38,9 @@ export interface GoogleLimitedDevicesOptions {
     scopes: string[];
 }
 
+/**
+ * https://developers.google.com/identity/protocols/oauth2/limited-input-device
+ */
 export class GoogleLimitedDevicesService {
     googleOAuth2Client: OAuth2Client;
     scopes: string[];
@@ -76,5 +79,29 @@ export class GoogleLimitedDevicesService {
         };
         const { data } = await axios.request<TokenResponse>(requestConfig);
         return data;
+    }
+
+    async getUserInfo({ id_token, access_token, refresh_token }: TokenResponse): Promise<UserInfoResponse> {
+        const ticket = await this.googleOAuth2Client.verifyIdToken({
+            idToken: id_token,
+            audience: this.googleOAuth2Client._clientId,
+        });
+        const payload = ticket.getPayload();
+        if (!payload) {
+            throw new Error('Invalid IdToken found in TokenResponse');
+        }
+        const { email, email_verified, name, given_name, exp, picture, family_name } = payload;
+        return {
+            access_token,
+            refresh_token,
+            expires_on: new Date(exp * 1000),
+            id_token,
+            email: email || null,
+            email_verified: email_verified || null,
+            name: name || null,
+            picture: picture || null,
+            given_name: given_name || null,
+            family_name: family_name || null,
+        };
     }
 }
